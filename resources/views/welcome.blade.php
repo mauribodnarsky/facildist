@@ -38,23 +38,12 @@
                 </div>
             @endif
             <div>
-  <input type="text" placeholder="MM" id="cardExpirationMonth" data-checkout="cardExpirationMonth">
-  <span class="date-separator">/</span>
-  <input type="text" placeholder="YY" id="cardExpirationYear" data-checkout="cardExpirationYear">
+<div class="row">
+    <div class="col-10 offset-1 bg-warning text-center">
+        <h1>Facil Dist</h1>
+        <p>La herramienta aliada para tus ventas y pedidos!</p>
+    </div>
 </div>
-<div id="wallet_container"></div>
-
-        </div>
-        <script src="https://sdk.mercadopago.com/js/v2">        </script>
-        <script>
-        const mp = new MercadoPago('TEST-5486b57e-c34e-4d4e-8562-6fb4647be872');
-        const bricksBuilder = mp.bricks();
-        mp.bricks().create("wallet", "wallet_container", {
-   initialization: {
-       preferenceId: "<PREFERENCE_ID>",
-   },
-});
-        </script>
 
     </body>
 </html>
