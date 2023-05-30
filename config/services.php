@@ -32,6 +32,6 @@ return [
     'google' => [
         'client_id' => env('GGOOGLE_CLIENT_ID'),
         'client_secret' => env('GGOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://example.com/callback-url',
+        'redirect' => 'http://facildist.com.ar:8000/google-auth/callback',
     ],
 ];
