@@ -3,15 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
  
-Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
- 
-Route::get('/google-auth/callback', function () {
-    $user = Socialite::driver('google')->user();
- 
-    // $user->token
-});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +27,12 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/google-auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+ 
+    // $user->token
+});
