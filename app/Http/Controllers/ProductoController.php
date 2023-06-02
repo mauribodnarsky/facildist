@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $usuario=Auth::user();
+        dd($usuario);
     }
 
     /**
