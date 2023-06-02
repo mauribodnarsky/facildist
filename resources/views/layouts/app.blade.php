@@ -99,22 +99,22 @@ Menu</a>
       </button>
      <ul class="nav">
      <li class="nav-item">
-            <a class="nav-link" href="{{ route('productos') }}">{{ __('Productos') }}</a>
+            <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('clientes') }}">{{ __('Clientes') }}</a>
+            <a class="nav-link" href="{{ route('clientes.index') }}">{{ __('Clientes') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('revistas') }}">{{ __('Revistas') }}</a>
+            <a class="nav-link" href="{{ route('revistas.index') }}">{{ __('Revistas') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('ofertas') }}">{{ __('Ofertas') }}</a>
+            <a class="nav-link" href="{{ route('ofertas.index') }}">{{ __('Ofertas') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('pedidos') }}">{{ __('Pedidos') }}</a>
+            <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Pedidos') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('perfil') }}">{{ __('Perfil') }}</a>
+            <a class="nav-link" href="{{ route('perfil.index') }}">{{ __('Perfil') }}</a>
     </li>
     <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">{{ __('Salir') }}</a>
