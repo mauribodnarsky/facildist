@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\distribuidora;
+use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DistribuidoraController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class DistribuidoraController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = Auth::user();
+        return view('admin', ['usuario' => $usuario]);
     }
 
     /**
@@ -22,9 +24,20 @@ class DistribuidoraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
+        try{
+            $data=$request->all();
+            $distribuidora=distribuidora::created($data);
+
+        }catch(Exception $e){
+
+        }
+
+
+        $usuarios=User::with('salon')->where('rol','client')->get();
+          
     }
 
     /**
