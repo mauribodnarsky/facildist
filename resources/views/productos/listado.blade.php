@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section
 <div class="container">
     @if(isset($productos))
     <div class="table-responsive">
@@ -28,3 +28,4 @@
 </ol>
     </div>
 </div>
+@endsection
