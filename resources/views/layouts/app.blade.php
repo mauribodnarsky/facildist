@@ -44,11 +44,7 @@
                         @guest
                         @else
                         <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-  Enlace con href
-</a>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Botón con data-bs-target
-</button>
+Menu</a>
 
 
                         @endguest
