@@ -13,16 +13,6 @@ class AddDistribuidorasTable extends Migration
      */
     public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
         Schema::create('distribuidoras', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
@@ -38,7 +28,16 @@ class AddDistribuidorasTable extends Migration
             $table->string('logo')->default(null)->nullable();
 
             $table->timestamps();
-        });
+        });    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+  
 
     }
 }

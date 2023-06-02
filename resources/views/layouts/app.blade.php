@@ -97,11 +97,29 @@ Menu</a>
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
         Botón dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Acción</a></li>
-        <li><a class="dropdown-item" href="#">Otra acción</a></li>
-        <li><a class="dropdown-item" href="#">Algo más aquí</a></li>
-      </ul>
+     <ul class="nav">
+     <li class="nav-item">
+            <a class="nav-link" href="{{ route('productos') }}">{{ __('Productos') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('clientes') }}">{{ __('Clientes') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('revistas') }}">{{ __('Revistas') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('ofertas') }}">{{ __('Ofertas') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('pedidos') }}">{{ __('Pedidos') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('perfil') }}">{{ __('Perfil') }}</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">{{ __('Salir') }}</a>
+    </li>
+     </ul>
     </div>
   </div>
 </div>
