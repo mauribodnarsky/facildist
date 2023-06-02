@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section
+@section('content')
 <div class="container">
     @if(isset($productos))
     <div class="table-responsive">
