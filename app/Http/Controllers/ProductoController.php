@@ -16,7 +16,7 @@ class ProductoController extends Controller
     public function index()
     {
         $usuario=Auth::user();
-        dd($usuario);
+        dd($usuario->distribuidora);
     }
 
     /**
