@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <div class="container">
 <form action="{{ route('distribuidoras.create') }}" method="POST" enctype="multipart/form-data">
     @csrf

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <div class="container">
     @if(isset($productos))
     <div class="table-responsive">
