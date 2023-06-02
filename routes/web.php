@@ -77,7 +77,7 @@ Route::prefix('productos')->middleware(Authenticate::class)->group(function(){
         //RUTAS DE DITRIBUIDORAS(PERFIL)
 
         Route::prefix('perfil')->middleware(Authenticate::class)->group(function(){
-            Route::get('/', [App\Http\Controllers\DistribuidoraController::class, 'index'])->name('perfil.index');
+            Route::get('/', [App\Http\Controllers\DistribuidoraController::class, 'index'])->name('distribuidora.perfil');
             Route::get('/show/{id}', [App\Http\Controllers\DistribuidoraController::class, 'show'])->name('distribuidoras.show');
             Route::put('update/', [App\Http\Controllers\DistribuidoraController::class, 'update'])->name('distribuidoras.update');
             Route::post('/', [App\Http\Controllers\DistribuidoraController::class, 'create'])->name('distribuidoras.create');

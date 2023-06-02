@@ -90,13 +90,10 @@ Menu</a>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <div>
-      Algo de texto placeholder. En la vida real puedes tener los elementos que hayas elegido. Como texto, imágenes, listas, etc.
+  <div>
     </div>
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Botón dropdown
-      </button>
+      
      <ul class="nav">
      <li class="nav-item">
             <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
@@ -114,7 +111,7 @@ Menu</a>
             <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Pedidos') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('perfil.index') }}">{{ __('Perfil') }}</a>
+            <a class="nav-link" href="{{ route('distribuidora.perfil') }}">{{ __('Perfil') }}</a>
     </li>
     <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">{{ __('Salir') }}</a>

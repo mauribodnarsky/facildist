@@ -15,8 +15,16 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $listado=null;
+        $perfil=null;
         $usuario=Auth::user();
-        dd($usuario->distribuidora);
+        if($usuario->distribuidora){
+            $perfil=$usuario->distribuidora;
+        }
+        if($usuario->distribuidora->productos){
+            $listado=$usuario->productos;
+        }
+        return view('perfil',['perfil'=>$perfil,'listado'=>$listado]);
     }
 
     /**

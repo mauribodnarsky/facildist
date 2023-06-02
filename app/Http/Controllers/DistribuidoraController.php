@@ -16,7 +16,7 @@ class DistribuidoraController extends Controller
     public function index()
     {
         $usuario = Auth::user();
-        return view('admin', ['usuario' => $usuario]);
+        return view('perfil', ['perfil' => $usuario->distribuidora]);
     }
 
     /**
@@ -29,14 +29,42 @@ class DistribuidoraController extends Controller
         
         try{
             $data=$request->all();
-            $distribuidora=distribuidora::created($data);
+            if($request->file('logo')){
+                $logo=$request->file('logo');
+                $data['logo']=$logo->getClientOriginalName(); 
+                
+                }else{
+                    
+                $data['logo']='';
+                }
+            $objdistribuidora=new distribuidora();
+            $distribuidora=$objdistribuidora->create($data);
+            if(isset($distribuidora->id)){
+                // Creamos una carpeta para el salon si no existe
+                    if($request->file('logo')){
+        
+                $carpetalogo = public_path('img/distribuidoras/logos/' . $distribuidora->id.'/');
+                if (!file_exists($carpetalogo)) {
+                    mkdir($carpetalogo, 0777, true);
+                }
+        
+                        // Obtenemos el nombre original de la imagen
+                        $nombreImagen = $logo->getClientOriginalName();
+                        // Guardamos el logo en la carpeta del salon
+                        $logo->move($carpetalogo, $nombreImagen);
+                        $distribuidora->logo="img/distribuidoras/logos/". $distribuidora->id."/".$logo->getClientOriginalName();
+                        $distribuidora->update();
+                        return view('admin', ['distribuidora' => $distribuidora]);
+
+                
+            }
+        }
 
         }catch(Exception $e){
+            return view('admin', ['distribuidora' => $distribuidora]);
 
         }
 
-
-        $usuarios=User::with('salon')->where('rol','client')->get();
           
     }
 

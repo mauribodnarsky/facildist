@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class distribuidora extends Model
 {
     use HasFactory;
+    protected $with=['productos'];
     protected $fillable = [
         'nombre' ,
         'correo',
@@ -38,7 +39,7 @@ class distribuidora extends Model
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return $validator->errors();
         }
 
         return static::query()->create($data);
@@ -50,12 +51,16 @@ class distribuidora extends Model
         $validator = Validator::make($data, $this->rules);
     
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return $validator->errors();
         }
     
         $this->fill($data);
         return distribuidora::where('id', $id)->update($data);
 
 
+    }
+
+    public function productos(){
+        return $this->hasMany(producto::class);
     }
 }
