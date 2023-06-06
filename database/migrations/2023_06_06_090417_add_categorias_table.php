@@ -16,7 +16,6 @@ class AddCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
             $table->string('imagen')->default(null)->nullable();
 
             $table->timestamps();
