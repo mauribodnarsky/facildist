@@ -21,6 +21,8 @@ class AddProductosTable extends Migration
             $table->boolean('estado')->default(false);
             $table->integer('stock')->default(null)->nullable();
             $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('distribuidora_id');
+
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
             $table->string('imagen')->default(null)->nullable();
