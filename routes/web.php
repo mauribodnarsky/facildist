@@ -18,7 +18,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth']);
+})->middleware(['auth'])->name('inicio');
 
 
 require __DIR__.'/auth.php';
