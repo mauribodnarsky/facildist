@@ -23,48 +23,114 @@
         </style>
     </head>
     <body >
-        <div class="container bg-light h-100">
+        <div class="container-fluid bg-white h-100">
             @if (Route::has('login'))
-                <div class="nav navbar-dark">
+                <div class="nav navbar-dark bg-light">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                     @else
-                    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                    <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span class="fs-4">Facil Dist</span>
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link " aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Precios</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>
     
       </ul>
     </header>
                    
 
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
-                        @endif
                     @endauth
                 </div>
             @endif
             <div>
 <div class="row">
-    <div class="col-12 col-md-6 bg-warning text-center">
-        <h1>Facil Dist</h1>
-        <p>La herramienta aliada para tus ventas y pedidos!</p>
+    <div class="col-12 col-md-6 ">
+    <div class="card">
+
+                <div class="card-body">
+                <H4>Iniciar sesión</H4>
+                @if (Route::has('password.request'))
+                                    <a class="text-muted" href="{{ route('password.request') }}">
+                                        {{ __('Olvidaste tu contraseña? Click aqui') }}
+                                    </a>
+                                @endif
+
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                       
+                        <div class="row mb-3 mt-2">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                     
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Recordarme') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-dark w-100">
+                                    {{ __('Ingresar') }}
+                                </button>
+
+                              
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                            <a href="{{ url('/google-auth/redirect') }}" class="btn btn-light w-100 border-rounded border-dark mt-2">
+    <svg class=" d-inline-block text-danger" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+   <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
+    Iniciar con Google
+</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
     </div>
     <div class="col-12 col-md-6 bg-white border-rounded border-2">
         <div class="row">
             <div class="col-12 card">
 
                 <div class="card-body">
-                    <H4>Crear una cuenta.</H4>
+                    <H4>Crear una cuenta</H4>
                     <p class="text-muted">Comience con su prueba de 30 días.</p>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
