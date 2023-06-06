@@ -60,21 +60,17 @@
         <p>La herramienta aliada para tus ventas y pedidos!</p>
     </div>
     <div class="col-12 col-md-6 bg-white border-rounded border-2">
-        <h1>Facil Dist</h1>
         <div class="row">
-            <div class="col-6">
-                
-            </div>
-            <div class="col-6">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="col-12 card">
 
                 <div class="card-body">
+                    <H4>Crear una cuenta.</H4>
+                    <p class="text-muted">Comience con su prueba de 30 días.</p>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -88,7 +84,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -102,7 +98,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -116,7 +112,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -125,23 +121,22 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-dark w-100">
+                                    {{ __('Registrarme') }}
                                 </button>
                             </div>
                         </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <a href="{{ url('/google-auth/redirect') }}" class="btn btn-danger bs-orange">
+                            <a href="{{ url('/google-auth/redirect') }}" class="btn btn-light w-100 border-rounded border-dark mt-2">
     <svg class=" d-inline-block text-danger" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
    <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
-    Iniciar con Google
+    Continuar con Google
 </a>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
            
 
             </div>
