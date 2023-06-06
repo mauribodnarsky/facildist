@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 });
 
 require __DIR__.'/auth.php';
