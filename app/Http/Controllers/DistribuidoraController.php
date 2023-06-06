@@ -55,14 +55,14 @@ class DistribuidoraController extends Controller
                         $logo->move($carpetalogo, $nombreImagen);
                         $distribuidora->logo="img/distribuidoras/logos/". $distribuidora->id."/".$logo->getClientOriginalName();
                         $distribuidora->update();
-                        return view('admin', ['distribuidora' => $distribuidora]);
+                        return view('perfil_completo', ['distribuidora' => $distribuidora]);
 
                 
             }
         }
 
         }catch(Exception $e){
-            return view('admin', ['distribuidora' => $distribuidora]);
+            return view('perfil_completo', ['distribuidora' => $distribuidora]);
 
         }
 
