@@ -18,7 +18,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
