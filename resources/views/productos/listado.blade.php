@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    @if(isset($productos))
+    @if(isset($productos) && $productos!=null)
     <div class="table-responsive">
     <ol class="list-group list-group-numbered">
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -27,5 +26,10 @@
   </li>
 </ol>
     </div>
-</div>
+    @else
+    <div class="card">
+      <div class="card-body text-center">
+        <a href=" " class="btn btn-outline-warning">Crear nuevo producto</a>
+      </div>
+    </div>
 @endsection

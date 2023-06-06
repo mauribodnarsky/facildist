@@ -19,13 +19,7 @@
         <input type="text" class="form-control" id="direccion" name="direccion" required>
     </div>
     
-    <div class="mb-3">
-        <label for="estado" class="form-label">Estado</label>
-        <select class="form-select" id="estado" name="estado">
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
-        </select>
-    </div>
+   
     
     <div class="mb-3">
         <label for="user_id" class="form-label">ID de usuario</label>
@@ -33,21 +27,18 @@
     </div>
     
     <div class="mb-3">
-        <label for="razon_social" class="form-label">Razón Social</label>
+        <label for="razon_social" class="form-label">Marca</label>
         <input type="text" class="form-control" id="razon_social" name="razon_social" required>
     </div>
     
-    <div class="mb-3">
-        <label for="plan" class="form-label">Plan</label>
-        <input type="text" class="form-control" id="plan" name="plan">
-    </div>
+   
     
     <div class="mb-3">
         <label for="logo" class="form-label">Logo</label>
         <input type="file" class="form-control" id="logo" name="logo">
     </div>
     
-    <button type="submit" class="btn btn-primary">Crear distribuidora</button>
+    <button type="submit" class="btn btn-outline-danger w-100">Guardar datos</button>
 </form>
 
 </div>
