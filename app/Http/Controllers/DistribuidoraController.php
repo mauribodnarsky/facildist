@@ -37,6 +37,7 @@ class DistribuidoraController extends Controller
                     
                 $data['logo']='';
                 }
+                $data['user_id']=Auth::user()->id;
             $objdistribuidora=new distribuidora();
             $distribuidora=$objdistribuidora->create($data);
             if(isset($distribuidora->id)){

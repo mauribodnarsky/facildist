@@ -21,10 +21,6 @@
     
    
     
-    <div class="mb-3">
-        <label for="user_id" class="form-label">ID de usuario</label>
-        <input type="text" class="form-control" id="user_id" name="user_id" required>
-    </div>
     
     <div class="mb-3">
         <label for="razon_social" class="form-label">Marca</label>
