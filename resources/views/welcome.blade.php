@@ -27,7 +27,7 @@
             @if (Route::has('login'))
                 <div class="nav navbar-dark bg-light">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    @extends('layouts.app')
                     @else
                     <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
