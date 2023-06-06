@@ -18,8 +18,11 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth'])->name('inicio');
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
