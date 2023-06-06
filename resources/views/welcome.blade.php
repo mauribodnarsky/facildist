@@ -48,6 +48,9 @@
                 </div>
             @endif
             <div>
+            @auth
+            @else
+
 <div class="row">
     <div class="col-12 col-md-6 ">
     <div class="card">
@@ -209,6 +212,8 @@
         </div>
     </div>
 </div>
+@endauth
+
 </div>
 
     </body>
