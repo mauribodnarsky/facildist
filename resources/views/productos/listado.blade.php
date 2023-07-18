@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <!-- Botón para abrir la modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
+<button type="button" class="btn my-1 btn-primary" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
     Crear Producto
 </button>
 
