@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;class producto extends Model
         'descripcion' => 'string',
         'presentacion' => 'nullable|string',
         'estado' => 'boolean',
-        'stock' => 'number|required',
+        'stock' => 'integer|required',
         'categoria_id' => 'required|exists:categorias,id',
         'distribuidora_id' => 'required|exists:distribuidoras,id',
         'imagen' => 'nullable|string',
