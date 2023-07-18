@@ -106,13 +106,13 @@
 <style>
     @media (min-width: 768px) {
   .card-product {
-    width: 20%;
-  }
+    width: 20% !important;
+    margin: 2% 1%  }
 }
 
 @media (max-width: 767px) {
   .card-product {
-    width: 80%;
-  }
+    width: 80% !important;
+    margin: 2% 1%  }
 }
 </style>
