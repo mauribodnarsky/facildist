@@ -49,9 +49,9 @@ class ProductoController extends Controller
                     
                 $data['imagen']='';
                 }
-                $data['user_id']=Auth::user()->id;
             $objproducto=new producto();
             $producto=$objproducto->create($data);
+            dd($producto);
             if(isset($producto->id)){
                 // Creamos una carpeta para el salon si no existe
                     if($request->file('imagen')){

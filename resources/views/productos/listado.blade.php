@@ -42,7 +42,7 @@
                     <div class="mb-3">
                         <label for="categoria_id" class="form-label">Categoría</label>
                         <select class="form-select" id="categoria_id" name="categoria_id" required>
-                            <option value="bebida">Bebida</option>
+                            <option value="1">Bebida</option>
                         </select>
                     </div>
                  
