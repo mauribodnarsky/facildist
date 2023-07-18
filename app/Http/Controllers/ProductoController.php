@@ -41,31 +41,31 @@ class ProductoController extends Controller
       
         try{
             $data=$request->all();
-            if($request->file('imagn')){
-                $imagn=$request->file('imagn');
-                $data['imagn']=$imagn->getClientOriginalName(); 
+            if($request->file('imagen')){
+                $imagen=$request->file('imagen');
+                $data['imagen']=$imagen->getClientOriginalName(); 
                 
                 }else{
                     
-                $data['imagn']='';
+                $data['imagen']='';
                 }
                 $data['user_id']=Auth::user()->id;
             $objproducto=new producto();
             $producto=$objproducto->create($data);
             if(isset($producto->id)){
                 // Creamos una carpeta para el salon si no existe
-                    if($request->file('imagn')){
+                    if($request->file('imagen')){
         
-                $carpetaimagn = public_path('img/productos/productos/' . $producto->id.'/');
-                if (!file_exists($carpetaimagn)) {
-                    mkdir($carpetaimagn, 0777, true);
+                $carpetaimagen = public_path('img/productos/productos/' . $producto->id.'/');
+                if (!file_exists($carpetaimagen)) {
+                    mkdir($carpetaimagen, 0777, true);
                 }
         
                         // Obtenemos el nombre original de la imagen
-                        $nombreImagen = $imagn->getClientOriginalName();
-                        // Guardamos el imagn en la carpeta del salon
-                        $imagn->move($carpetaimagn, $nombreImagen);
-                        $producto->imagn="img/productos/productos/". $producto->id."/".$imagn->getClientOriginalName();
+                        $nombreImagen = $imagen->getClientOriginalName();
+                        // Guardamos el imagen en la carpeta del salon
+                        $imagen->move($carpetaimagen, $nombreImagen);
+                        $producto->imagen="img/productos/productos/". $producto->id."/".$imagen->getClientOriginalName();
                         $producto->update();
                         $listado=null;
                         $perfil=null;
@@ -86,11 +86,11 @@ class ProductoController extends Controller
             $listado=null;
             $perfil=null;
             $usuario=Auth::user();
-            if($usuario->producto){
-                $perfil=$usuario->producto;
+            if($usuario->distribuidora){
+                $perfil=$usuario->distribuidora;
             }
-            if($usuario->producto->productos){
-                $listado=$usuario->productos;
+            if($usuario->distribuidora->productos){
+                $listado=$usuario->distribuidora->productos;
             }
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
 
