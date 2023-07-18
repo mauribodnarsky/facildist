@@ -63,7 +63,7 @@
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
-            <div class="card border-primary mb-3" style="width:25%;max-width: 25%;">
+            <div class="card border-primary mb-3 my-1 card-product" >
                          <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -80,7 +80,7 @@
                             <a href="#" class="card-link">Otro enlace</a>
                         </div>
 </div>
-<div class="card border-primary mb-3" style="width:25%;max-width: 25%;">
+<div class="card border-primary mb-3 my-1 card-product" >
                          <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -101,3 +101,18 @@
             </div>
     @endif
 @endsection
+
+
+<style>
+    @media (min-width: 768px) {
+  .card-product {
+    width: 20%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-product {
+    width: 80%;
+  }
+}
+</style>
