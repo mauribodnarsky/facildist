@@ -62,29 +62,42 @@
         
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
-            <ol class="list-group list-group-numbered">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-            <div class="fw-bold">Subencabezado</div>
-            Contenido para el elemento de la lista
+            <div class="row">
+            <div class="card border-primary mb-3" style="width:25%;max-width: 25%;">
+                         <div class="card-header">Encabezado</div>
+                          <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Título de la tarjeta</h5>
+                            <p class="card-text">Un texto de ejemplo rápido para colocal cerca del título de la tarjeta y componer la mayor parte del contenido de la tarjeta.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Un elemento</li>
+                            <li class="list-group-item">Un segundo elemento<//li>
+                            <li class="list-group-item">Un tercer elemento<//li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Enlace de tarjeta</a>
+                            <a href="#" class="card-link">Otro enlace</a>
+                        </div>
+</div>
+<div class="card border-primary mb-3" style="width:25%;max-width: 25%;">
+                         <div class="card-header">Encabezado</div>
+                          <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Título de la tarjeta</h5>
+                            <p class="card-text">Un texto de ejemplo rápido para colocal cerca del título de la tarjeta y componer la mayor parte del contenido de la tarjeta.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Un elemento</li>
+                            <li class="list-group-item">Un segundo elemento<//li>
+                            <li class="list-group-item">Un tercer elemento<//li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Enlace de tarjeta</a>
+                            <a href="#" class="card-link">Otro enlace</a>
+                        </div>
+</div>
             </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-            <div class="fw-bold">Subencabezado</div>
-            Contenido para el elemento de la lista
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-            <div class="fw-bold">Subencabezado</div>
-            Contenido para el elemento de la lista
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        </ol>
             </div>
     @endif
 @endsection
