@@ -42,15 +42,10 @@
                     <div class="mb-3">
                         <label for="categoria_id" class="form-label">Categoría</label>
                         <select class="form-select" id="categoria_id" name="categoria_id" required>
-                            <!-- Opciones de categoría -->
+                            <option value="bebida">Bebida</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="distribuidora_id" class="form-label">Distribuidora</label>
-                        <select class="form-select" id="distribuidora_id" name="distribuidora_id" required>
-                            <!-- Opciones de distribuidora -->
-                        </select>
-                    </div>
+                 
                     <div class="mb-3">
                         <label for="imagen" class="form-label">Imagen</label>
                         <input type="file" class="form-control" id="imagen" name="imagen">
@@ -65,7 +60,7 @@
     </div>
 </div>
         
-        @if(isset($listado) && $listado!=null)
+        @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <ol class="list-group list-group-numbered">
         <li class="list-group-item d-flex justify-content-between align-items-start">
