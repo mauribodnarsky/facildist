@@ -85,7 +85,6 @@ class ProductoController extends Controller
         }catch(Exception $e){
             $listado=null;
             $perfil=null;
-            dd($e->getMessage());
             $usuario=Auth::user();
             if($usuario->distribuidora){
                 $perfil=$usuario->distribuidora;
