@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;class producto extends Model
 {
     use HasFactory;
-    protected $fillable=['id,nombre,descripcion,presentacion,estado,stock,categoria_id,distribuidora_id,imagen'];
+    protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen'];
     protected $rules = [
         'nombre' => 'string|max:60',
         'descripcion' => 'string',
