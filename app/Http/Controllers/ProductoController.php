@@ -49,6 +49,8 @@ class ProductoController extends Controller
                     
                 $data['imagen']='';
                 }
+                $usuario = Auth::user();
+               $data['distribuidora_id']=$usuario->distribuidora->id;
             $objproducto=new producto();
             $producto=$objproducto->create($data);
             dd($producto);

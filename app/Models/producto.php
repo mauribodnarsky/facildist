@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;class producto extends Model
     use HasFactory;
     protected $fillable=['id,nombre,descripcion,presentacion,estado,stock,categoria_id,distribuidora_id,imagen'];
     protected $rules = [
-        'nombre' => 'string|max:12',
+        'nombre' => 'string|max:60',
         'descripcion' => 'string',
         'presentacion' => 'nullable|string',
         'estado' => 'boolean',
@@ -24,10 +24,8 @@ use Illuminate\Support\Facades\Auth;class producto extends Model
     public function create($data)
     {
  
-        $usuario = Auth::user();
 
         $validator = Validator::make($data, $this->rules);
-        $data['distribuidora_id']=$usuario->distribuidora->id;
         if ($validator->fails()) {
             return $validator->errors();
         }
