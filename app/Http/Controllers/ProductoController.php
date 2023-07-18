@@ -59,7 +59,7 @@ class ProductoController extends Controller
                 // Creamos una carpeta para el salon si no existe
                     if($request->file('imagen')){
         
-                $carpetaimagen = public_path('img/productos/productos/' . $producto->id.'/');
+                $carpetaimagen = public_path('img/productos/' . $producto->id.'/');
                 if (!file_exists($carpetaimagen)) {
                     mkdir($carpetaimagen, 0777, true);
                 }
@@ -68,7 +68,7 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $producto->imagen="img/productos/productos/". $producto->id."/".$imagen->getClientOriginalName();
+                        $producto->imagen="img/productos/". $producto->id."/".$imagen->getClientOriginalName();
                         $producto->update();
                         $listado=null;
                         $perfil=null;
