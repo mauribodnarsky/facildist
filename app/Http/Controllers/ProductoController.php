@@ -21,12 +21,11 @@ class ProductoController extends Controller
         $listado=null;
         $perfil=null;
         $usuario=Auth::user();
-        dd($usuario);
-        if($usuario->producto){
-            $perfil=$usuario->producto;
+        if($usuario->distribuidora){
+            $perfil=$usuario->distribuidora;
         }
-        if($usuario->producto->productos){
-            $listado=$usuario->productos;
+        if($usuario->distribuidora->productos){
+            $listado=$usuario->distribuidora->productos;
         }
         return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
     }
@@ -71,11 +70,11 @@ class ProductoController extends Controller
                         $listado=null;
                         $perfil=null;
                         $usuario=Auth::user();
-                        if($usuario->producto){
-                            $perfil=$usuario->producto;
+                        if($usuario->distribuidora){
+                            $perfil=$usuario->distribuidora;
                         }
-                        if($usuario->producto->productos){
-                            $listado=$usuario->productos;
+                        if($usuario->distribuidora->productos){
+                            $listado=$usuario->distribuidora->productos;
                         }
                         return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'producto_creado' => $producto]);
 

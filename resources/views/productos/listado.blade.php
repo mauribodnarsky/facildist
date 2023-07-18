@@ -65,7 +65,7 @@
     </div>
 </div>
   
-@if(isset($productos) && $productos!=null)
+@if(isset($listado) && $listado!=null)
     <div class="table-responsive">
     <ol class="list-group list-group-numbered">
   <li class="list-group-item d-flex justify-content-between align-items-start">
