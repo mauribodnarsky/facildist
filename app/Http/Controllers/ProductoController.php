@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\producto;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -18,10 +21,10 @@ class ProductoController extends Controller
         $listado=null;
         $perfil=null;
         $usuario=Auth::user();
-        if($usuario->distribuidora){
-            $perfil=$usuario->distribuidora;
+        if($usuario->producto){
+            $perfil=$usuario->producto;
         }
-        if($usuario->distribuidora->productos){
+        if($usuario->producto->productos){
             $listado=$usuario->productos;
         }
         return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
@@ -32,17 +35,75 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
+     public function create(Request $request)
+     {
+      
+        try{
+            $data=$request->all();
+            if($request->file('imagn')){
+                $imagn=$request->file('imagn');
+                $data['imagn']=$imagn->getClientOriginalName(); 
+                
+                }else{
+                    
+                $data['imagn']='';
+                }
+                $data['user_id']=Auth::user()->id;
+            $objproducto=new producto();
+            $producto=$objproducto->create($data);
+            if(isset($producto->id)){
+                // Creamos una carpeta para el salon si no existe
+                    if($request->file('imagn')){
+        
+                $carpetaimagn = public_path('img/productos/productos/' . $producto->id.'/');
+                if (!file_exists($carpetaimagn)) {
+                    mkdir($carpetaimagn, 0777, true);
+                }
+        
+                        // Obtenemos el nombre original de la imagen
+                        $nombreImagen = $imagn->getClientOriginalName();
+                        // Guardamos el imagn en la carpeta del salon
+                        $imagn->move($carpetaimagn, $nombreImagen);
+                        $producto->imagn="img/productos/productos/". $producto->id."/".$imagn->getClientOriginalName();
+                        $producto->update();
+                        $listado=null;
+                        $perfil=null;
+                        $usuario=Auth::user();
+                        if($usuario->producto){
+                            $perfil=$usuario->producto;
+                        }
+                        if($usuario->producto->productos){
+                            $listado=$usuario->productos;
+                        }
+                        return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'producto_creado' => $producto]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+                
+            }
+        }
+
+        }catch(Exception $e){
+            $listado=null;
+            $perfil=null;
+            $usuario=Auth::user();
+            if($usuario->producto){
+                $perfil=$usuario->producto;
+            }
+            if($usuario->producto->productos){
+                $listado=$usuario->productos;
+            }
+            return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
+
+        }
+
+    }
+ 
+     /**
+      * Store a newly created resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @return \Illuminate\Http\Response
+      */
     public function store(Request $request)
     {
         //

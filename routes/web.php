@@ -57,7 +57,7 @@ Route::prefix('productos')->middleware(Authenticate::class)->group(function(){
     Route::get('invitacion/{evento}', [ProductoController::class, 'viewInvited']);
     Route::put('update/', [App\Http\Controllers\ProductoController::class, 'update'])->name('productos.update');
 
-    Route::post('/', [App\Http\Controllers\ProductoController::class, 'create'])->name('productos.create');
+    Route::post('/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('productos.create');
 
     Route::delete('/{id}', [App\Http\Controllers\ProductoController::class, 'delete'])->name('productos.destroy');
 
