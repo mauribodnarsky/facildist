@@ -21,6 +21,7 @@ class ProductoController extends Controller
         $listado=null;
         $perfil=null;
         $usuario=Auth::user();
+        dd($usuario);
         if($usuario->producto){
             $perfil=$usuario->producto;
         }
