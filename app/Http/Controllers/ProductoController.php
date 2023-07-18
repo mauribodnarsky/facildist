@@ -24,7 +24,7 @@ class ProductoController extends Controller
         if($usuario->distribuidora->productos){
             $listado=$usuario->productos;
         }
-        return view('perfil',['perfil'=>$perfil,'listado'=>$listado]);
+        return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
     }
 
     /**
