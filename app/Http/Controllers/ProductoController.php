@@ -54,7 +54,6 @@ class ProductoController extends Controller
                $data['distribuidora_id']=$usuario->distribuidora->id;
             $objproducto=new producto();
             $producto=$objproducto->create($data);
-            dd($producto);
             if(isset($producto->id)){
                 // Creamos una carpeta para el salon si no existe
                     if($request->file('imagen')){

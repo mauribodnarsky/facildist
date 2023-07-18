@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;class producto extends Model
+use Illuminate\Support\Facades\Auth;
+class producto extends Model
 {
     use HasFactory;
     protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen'];
