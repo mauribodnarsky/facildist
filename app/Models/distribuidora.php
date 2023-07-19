@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -62,5 +62,9 @@ class distribuidora extends Model
 
     public function productos(){
         return $this->hasMany(producto::class);
+    }
+    
+    public function categorias(){
+        return $this->hasMany(Categoria::class);
     }
 }
