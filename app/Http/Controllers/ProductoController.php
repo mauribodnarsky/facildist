@@ -77,6 +77,8 @@ class ProductoController extends Controller
                         $producto->update();
                         $listado=null;
                         $perfil=null;
+                        $categorias=null;
+
                         $usuario=Auth::user();
                         if($usuario->distribuidora){
                             $perfil=$usuario->distribuidora;
@@ -84,6 +86,7 @@ class ProductoController extends Controller
                         if($usuario->distribuidora->productos){
                             $listado=$usuario->distribuidora->productos;
                         }
+                        
                         if($usuario->distribuidora->categorias){
                             $categorias=$usuario->distribuidora->categorias;
                         }
@@ -96,6 +99,7 @@ class ProductoController extends Controller
         }catch(Exception $e){
             $listado=null;
             $perfil=null;
+            
             $usuario=Auth::user();
             if($usuario->distribuidora){
                 $perfil=$usuario->distribuidora;
