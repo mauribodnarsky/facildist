@@ -55,14 +55,14 @@
 
                         @if(isset($categorias) && $categorias !== null)
   
-        @foreach($categorias as $categoria)
+                            @foreach($categorias as $categoryItem)
          
-                        <option value="{{$categoria->id}}">{{ $categoria->nombre }}</option>
+                               <option value="{{$categoryItem->id}}">{{ $categoryItem->nombre }}</option>
                     
-        @endforeach
-@else
-    <option value="">Sin Categoria,cree una</option>
-@endif                 
+                             @endforeach
+                        @else
+                            <option value="">Sin Categoria,cree una</option>
+                        @endif                 
        </select>
                     </div>
                  
