@@ -113,6 +113,6 @@
 @media (max-width: 767px) {
   .card-product {
     width: 80% !important;
-    margin: 2% 1%  }
+    margin: 2% auto  }
 }
 </style>
