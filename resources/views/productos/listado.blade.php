@@ -134,6 +134,7 @@
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
+            @foreach($listado as $producto)
             <div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
@@ -151,23 +152,7 @@
                             <a href="#" class="card-link">Otro enlace</a>
                         </div>
 </div>
-<div class="card border-warning mb-3 my-1 card-product" >
-                         <div class="card-header">Encabezado</div>
-                          <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Título de la tarjeta</h5>
-                            <p class="card-text">Un texto de ejemplo rápido para colocal cerca del título de la tarjeta y componer la mayor parte del contenido de la tarjeta.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Un elemento</li>
-                            <li class="list-group-item">Un segundo elemento<//li>
-                            <li class="list-group-item">Un tercer elemento<//li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Enlace de tarjeta</a>
-                            <a href="#" class="card-link">Otro enlace</a>
-                        </div>
-</div>
+@endforeach
             </div>
             </div>
     @endif

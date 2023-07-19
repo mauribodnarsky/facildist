@@ -73,7 +73,7 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $producto->imagen="img/productos/". $producto->id."/".$imagen->getClientOriginalName();
+                        $producto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
                         $producto->update();
                         $listado=null;
                         $perfil=null;
