@@ -15,6 +15,8 @@ class AddClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('distribuidora_id');
+
             $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
             $table->string('nombre');
             $table->string('celular');
