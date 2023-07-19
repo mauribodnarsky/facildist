@@ -80,7 +80,7 @@ Menu</a>
             <a class="nav-link" href="{{ route('distribuidora.perfil') }}">{{ __('Perfil') }}</a>
     </li>
     <li class="nav-item">
-            <form  method="POST" action="{{ route('logout') }}"><button type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
+            <form  method="POST" action="{{ route('logout') }}">@csrf<button type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
     </li>
      </ul>
     </div>
