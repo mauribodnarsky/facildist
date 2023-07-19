@@ -13,9 +13,11 @@ class CreateTableVentas extends Migration
      */
     public function up()
     {
-        Schema::create('table_ventas', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreign('factura_id')->references('id')->on('facturas');
+            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->integer('cantidad');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateTableVentas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_ventas');
+        Schema::dropIfExists('ventas');
     }
 }

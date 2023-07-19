@@ -13,8 +13,11 @@ class CreateTableCobros extends Migration
      */
     public function up()
     {
-        Schema::create('table_cobros', function (Blueprint $table) {
+        Schema::create('cobros', function (Blueprint $table) {
             $table->id();
+            $table->foreign('factura_id')->references('id')->on('facturas');
+            $table->float('monto', 8, 2); // Declaración del campo "monto" como flotante con 8 dígitos totales y 2 decimales
+            $table->string('tipo_pago');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateTableCobros extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_cobros');
+        Schema::dropIfExists('cobros');
     }
 }

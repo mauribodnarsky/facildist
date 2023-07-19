@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
  use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Http\Controllers\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,15 +47,26 @@ Route::get('/google-auth/callback', function () {
 Auth::login($user);
 return redirect('/dashboard');
 });
+//RUTAS DE CATEGORIAS
 
+Route::prefix('categorias')->middleware(Authenticate::class)->group(function(){
+    Route::get('/', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/show/{id}', [App\Http\Controllers\CategoriaController::class, 'show'])->name('categorias.show');
+
+    Route::get('invitacion/{evento}', [CategoriaController::class, 'viewInvited']);
+    Route::put('update/', [App\Http\Controllers\CategoriaController::class, 'update'])->name('categorias.update');
+
+    Route::post('/create', [App\Http\Controllers\CategoriaController::class, 'create'])->name('categorias.create');
+
+    Route::delete('/{id}', [App\Http\Controllers\CategoriaController::class, 'delete'])->name('categorias.destroy');
+
+    });
 //RUTAS DE PRODUCTOS
 
 Route::prefix('productos')->middleware(Authenticate::class)->group(function(){
     Route::get('/', [App\Http\Controllers\ProductoController::class, 'index'])->name('productos.index');
     Route::get('/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('productos.show');
 
-    Route::get('invitacion/{id}/{cantidad}', [ProductoController::class, 'updateConfirmados']);
-    Route::get('invitacion/{evento}', [ProductoController::class, 'viewInvited']);
     Route::put('update/', [App\Http\Controllers\ProductoController::class, 'update'])->name('productos.update');
 
     Route::post('/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('productos.create');
@@ -62,6 +74,7 @@ Route::prefix('productos')->middleware(Authenticate::class)->group(function(){
     Route::delete('/{id}', [App\Http\Controllers\ProductoController::class, 'delete'])->name('productos.destroy');
 
     });
+
     
         //RUTAS DE PEDIDOS
 

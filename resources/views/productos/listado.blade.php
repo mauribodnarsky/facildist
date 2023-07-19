@@ -1,9 +1,19 @@
 @extends('layouts.app')
 @section('content')
-<!-- Botón para abrir la modal -->
-<button type="button" class="btn my-1 btn-primary" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
-    Crear Producto
+<div class="row">
+    <div class="col-3 offset-1">
+        <!-- Botón para abrir la modal -->
+<button type="button" class="btn my-1 btn-primary w-100" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
+    + Producto
 </button>
+    </div>
+    <div class="col-3 offset-1">
+        <!-- Botón para abrir la modal -->
+<button type="button" class="btn my-1 btn-primary w-100" data-bs-toggle="modal" data-bs-target="#crearCategoriaModal">
+    + Categoria
+</button>
+    </div>
+</div>
 
 <!-- Modal de creación de producto -->
 <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,11 +70,36 @@
     </div>
 </div>
         
+<!-- Modal de creación de categoria -->
+<div class="modal fade" id="crearCategoriaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Categoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('categorias.create') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
+                    </div>
+                 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
             <div class="card border-primary mb-3 my-1 card-product" >
-                         <div class="card-header">Encabezado</div>
+                         <div class="card-header">{{dd($listado)}}</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Título de la tarjeta</h5>
