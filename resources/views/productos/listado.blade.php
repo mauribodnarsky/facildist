@@ -3,13 +3,13 @@
 <div class="row">
     <div class="col-3 offset-1">
         <!-- Botón para abrir la modal -->
-<button type="button" class="btn my-1 btn-primary w-100" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
+<button type="button" class="btn my-1 btn-warning w-100" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
     + Producto
 </button>
     </div>
     <div class="col-3 offset-1">
         <!-- Botón para abrir la modal -->
-<button type="button" class="btn my-1 btn-primary w-100" data-bs-toggle="modal" data-bs-target="#crearCategoriaModal">
+<button type="button" class="btn my-1 btn-warning w-100" data-bs-toggle="modal" data-bs-target="#crearCategoriaModal">
     + Categoria
 </button>
     </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-warning">Crear</button>
                     </div>
                 </form>
             </div>
@@ -98,7 +98,7 @@
                  
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-warning">Crear</button>
                     </div>
                 </form>
             </div>
@@ -134,7 +134,7 @@
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
-            <div class="card border-primary mb-3 my-1 card-product" >
+            <div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
@@ -151,7 +151,7 @@
                             <a href="#" class="card-link">Otro enlace</a>
                         </div>
 </div>
-<div class="card border-primary mb-3 my-1 card-product" >
+<div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
