@@ -10,7 +10,7 @@ use App\Models\Categoria;
 class producto extends Model
 {
     use HasFactory;
-    protected $with=['Categoria'];
+    protected $with=['categoria'];
     protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen'];
     protected $rules = [
         'nombre' => 'string|max:60',
@@ -49,7 +49,7 @@ class producto extends Model
 
 
     }
-    public function Categoria(){
-        return $this->hasOne(Categoria::class);
+    public function categoria(){
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 }

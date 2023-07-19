@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Categoria extends Model
 {
     use HasFactory;
+    protected $table='categorias';
     protected $fillable=['nombre','distribuidora_id'];
     protected $rules = [
         'nombre' => 'string|max:60',
