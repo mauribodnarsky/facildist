@@ -13,8 +13,13 @@ class CreateTableFacturas extends Migration
      */
     public function up()
     {
-        Schema::create('table_facturas', function (Blueprint $table) {
+        Schema::create('facturas', function (Blueprint $table) {
             $table->id();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->string('estado')->nullable();
+            $table->date('fecha_vencimiento');
+            $table->float('total', 8, 2); // Declaración del campo "monto" como flotante con 8 dígitos totales y 2 decimales
+            $table->float('total_abonado', 8, 2); // Declaración del campo "monto" como flotante con 8 dígitos totales y 2 decimales
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateTableFacturas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_facturas');
+        Schema::dropIfExists('facturas');
     }
 }

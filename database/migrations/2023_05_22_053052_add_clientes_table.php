@@ -13,9 +13,14 @@ class AddClientesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
+            $table->string('nombre');
+            $table->string('celular');
+            $table->string('direccion');
+          });
     }
-
     /**
      * Reverse the migrations.
      *
