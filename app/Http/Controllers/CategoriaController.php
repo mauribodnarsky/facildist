@@ -37,10 +37,14 @@ class CategoriaController extends Controller
             if($usuario->distribuidora){
                 $perfil=$usuario->distribuidora;
             }
-            if($usuario->distribuidora->categorias){
-                $listado=$usuario->distribuidora->categorias;
+            if($usuario->distribuidora->productos){
+                $listado=$usuario->distribuidora->productos;
             }
-            return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categoria_creada' => $categoria]); 
+            if($usuario->distribuidora->categorias){
+                $categorias=$usuario->distribuidora->categorias;
+               }
+               return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
+    
        }catch(Exception $e){
            $listado=null;
            $perfil=null;
@@ -48,11 +52,13 @@ class CategoriaController extends Controller
            if($usuario->distribuidora){
                $perfil=$usuario->distribuidora;
            }
-           if($usuario->distribuidora->categorias){
-               $listado=$usuario->distribuidora->categorias;
+           if($usuario->distribuidora->productos){
+               $listado=$usuario->distribuidora->productos;
            }
-
-           return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
+           if($usuario->distribuidora->categorias){
+            $categorias=$usuario->distribuidora->categorias;
+           }
+           return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
 
        }
 
