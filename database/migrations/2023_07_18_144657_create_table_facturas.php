@@ -15,6 +15,8 @@ class CreateTableFacturas extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cliente_id');
+
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->string('estado')->nullable();
             $table->date('fecha_vencimiento');

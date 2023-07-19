@@ -15,6 +15,7 @@ class CreateTableCobros extends Migration
     {
         Schema::create('cobros', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('factura_id');
             $table->foreign('factura_id')->references('id')->on('facturas');
             $table->float('monto', 8, 2); // Declaración del campo "monto" como flotante con 8 dígitos totales y 2 decimales
             $table->string('tipo_pago');

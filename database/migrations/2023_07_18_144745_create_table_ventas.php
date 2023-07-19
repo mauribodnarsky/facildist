@@ -15,6 +15,9 @@ class CreateTableVentas extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('factura_id');
+            $table->unsignedBigInteger('producto_id');
+
             $table->foreign('factura_id')->references('id')->on('facturas');
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->integer('cantidad');
