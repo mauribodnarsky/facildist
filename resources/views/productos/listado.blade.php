@@ -52,8 +52,18 @@
                     <div class="mb-3">
                         <label for="categoria_id" class="form-label">Categoría</label>
                         <select class="form-select" id="categoria_id" name="categoria_id" required>
-                            <option value="1">Bebida</option>
-                        </select>
+
+                        @if(isset($categorias) && $categorias !== null)
+  
+        @foreach($categorias as $categoria)
+         
+                        <option value="{{$categoria->id}}">{{ $categoria->nombre }}</option>
+                    
+        @endforeach
+@else
+    <option value="">Sin Categoria,cree una</option>
+@endif                 
+       </select>
                     </div>
                  
                     <div class="mb-3">
