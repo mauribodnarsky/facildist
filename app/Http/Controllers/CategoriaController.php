@@ -40,7 +40,7 @@ class CategoriaController extends Controller
             if($usuario->distribuidora->categorias){
                 $listado=$usuario->distribuidora->categorias;
             }
-            return view('categorias.listado',['perfil'=>$perfil,'listado'=>$listado,'categoria_creada' => $categoria]); 
+            return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categoria_creada' => $categoria]); 
        }catch(Exception $e){
            $listado=null;
            $perfil=null;
@@ -52,7 +52,7 @@ class CategoriaController extends Controller
                $listado=$usuario->distribuidora->categorias;
            }
 
-           return view('categorias.listado',['perfil'=>$perfil,'listado'=>$listado]);
+           return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
 
        }
 
