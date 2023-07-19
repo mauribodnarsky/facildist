@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class distribuidora extends Model
 {
     use HasFactory;
-    protected $with=['productos'];
+    protected $with=['productos','categorias'];
     protected $fillable = [
         'nombre' ,
         'correo',

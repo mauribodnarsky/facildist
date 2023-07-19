@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Categoria;
 class producto extends Model
 {
     use HasFactory;
+    protected $with=['Categoria'];
     protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen'];
     protected $rules = [
         'nombre' => 'string|max:60',
@@ -47,5 +49,7 @@ class producto extends Model
 
 
     }
-
+    public function Categoria(){
+        return $this->hasOne(Categoria::class);
+    }
 }
