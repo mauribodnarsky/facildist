@@ -27,7 +27,12 @@ class ProductoController extends Controller
         if($usuario->distribuidora->productos){
             $listado=$usuario->distribuidora->productos;
         }
-        return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
+        if($usuario->distribuidora->categorias){
+            $categorias=$usuario->distribuidora->categorias;
+        }
+
+
+        return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado]);
     }
 
     /**
@@ -78,7 +83,10 @@ class ProductoController extends Controller
                         if($usuario->distribuidora->productos){
                             $listado=$usuario->distribuidora->productos;
                         }
-                        return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'producto_creado' => $producto]);
+                        if($usuario->distribuidora->categorias){
+                            $categorias=$usuario->distribuidora->categorias;
+                        }
+                        return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado,'producto_creado' => $producto]);
 
                 
             }

@@ -95,11 +95,37 @@
         </div>
     </div>
 </div>
+@if(isset($categorias) && $categorias !== null)
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Categorías de Productos</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach($categorias as $categoria)
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $categoria->nombre }}</h5>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+@else
+    <div class="row">
+        <div class="col-md-12">
+            <h3>No hay categorías disponibles.</h3>
+        </div>
+    </div>
+@endif
+
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
             <div class="card border-primary mb-3 my-1 card-product" >
-                         <div class="card-header">{{dd($listado)}}</div>
+                         <div class="card-header">Encabezado</div>
                           <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Título de la tarjeta</h5>
