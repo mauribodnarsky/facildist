@@ -27,6 +27,7 @@ class ProductoController extends Controller
         if($usuario->distribuidora->productos){
             $listado=$usuario->distribuidora->productos;
         }
+        $categorias=null;
         if($usuario->distribuidora->categorias){
             $categorias=$usuario->distribuidora->categorias;
         }
