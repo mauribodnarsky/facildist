@@ -53,7 +53,7 @@ class ProductoController extends Controller
                 
                 }else{
                     
-                $data['imagen']='';
+                $data['imagen']='https://facildist.com.ar/public/img/default.jpg';
                 }
                 $usuario = Auth::user();
 
@@ -75,6 +75,7 @@ class ProductoController extends Controller
                         $imagen->move($carpetaimagen, $nombreImagen);
                         $producto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
                         $producto->update();
+            }
                         $listado=null;
                         $perfil=null;
                         $categorias=null;
@@ -93,7 +94,7 @@ class ProductoController extends Controller
                         return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado,'producto_creado' => $producto]);
 
                 
-            }
+            
         }
 
         }catch(Exception $e){
