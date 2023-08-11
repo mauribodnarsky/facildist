@@ -155,8 +155,9 @@ class ProductoController extends Controller
                         $objproducto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
 
                     }
-                    $objproducto->update($data);
-
+                 
+                    $r=$objproducto->update($data);
+                    dd($r);
 
                         $listado=null;
                         $perfil=null;
