@@ -139,6 +139,7 @@ class ProductoController extends Controller
 
                $data['distribuidora_id']=$usuario->distribuidora->id;
                $objproducto = producto::findOrFail($productoId);
+               dd($objproducto);
                if(isset($objproducto)){
                 // Creamos una carpeta para el salon si no existe
                     if($request->file('imagen')){
