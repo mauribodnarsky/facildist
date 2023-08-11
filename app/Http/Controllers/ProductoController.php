@@ -108,7 +108,6 @@ class ProductoController extends Controller
             if($usuario->distribuidora->productos){
                 $listado=$usuario->distribuidora->productos;
             }
-            dd($e);
 
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
 
@@ -116,39 +115,6 @@ class ProductoController extends Controller
 
     }
  
-     /**
-      * Store a newly created resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @return \Illuminate\Http\Response
-      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\producto  $producto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(producto $producto)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\producto  $producto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(producto $producto)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -158,8 +124,76 @@ class ProductoController extends Controller
      */
     public function update(Request $request, producto $producto)
     {
-        //
-    }
+        try{
+            $data=$request->all();
+            $productoId = $data['producto_id']; // Supongo que tienes un campo oculto en el formulario con el ID del producto a actualizar
+            if($request->file('imagen')){
+                $imagen=$request->file('imagen');
+                $data['imagen']=$imagen->getClientOriginalName(); 
+                
+                }else{
+                    
+                $data['imagen']='https://facildist.com.ar/public/img/default.jpg';
+                }
+                $usuario = Auth::user();
+
+               $data['distribuidora_id']=$usuario->distribuidora->id;
+               $objproducto = producto::findOrFail($productoId);
+               if(isset($objproducto)){
+                // Creamos una carpeta para el salon si no existe
+                    if($request->file('imagen')){
+        
+                $carpetaimagen = public_path('img/productos/' . $objproducto->id.'/');
+                if (!file_exists($carpetaimagen)) {
+                    mkdir($carpetaimagen, 0777, true);
+                }
+        
+                        // Obtenemos el nombre original de la imagen
+                        $nombreImagen = $imagen->getClientOriginalName();
+                        // Guardamos el imagen en la carpeta del salon
+                        $imagen->move($carpetaimagen, $nombreImagen);
+                        $objproducto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
+
+                    }
+                    $objproducto->update($data);
+
+
+                        $listado=null;
+                        $perfil=null;
+                        $categorias=null;
+
+                        $usuario=Auth::user();
+                        if($usuario->distribuidora){
+                            $perfil=$usuario->distribuidora;
+                        }
+                        if($usuario->distribuidora->productos){
+                            $listado=$usuario->distribuidora->productos;
+                        }
+                        
+                        if($usuario->distribuidora->categorias){
+                            $categorias=$usuario->distribuidora->categorias;
+                        }
+                        return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado,'producto_creado' => $producto]);
+
+                
+            
+        }
+
+        }catch(Exception $e){
+            $listado=null;
+            $perfil=null;
+            
+            $usuario=Auth::user();
+            if($usuario->distribuidora){
+                $perfil=$usuario->distribuidora;
+            }
+            if($usuario->distribuidora->productos){
+                $listado=$usuario->distribuidora->productos;
+            }
+
+            return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
+
+        }    }
 
     /**
      * Remove the specified resource from storage.

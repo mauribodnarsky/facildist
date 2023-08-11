@@ -136,7 +136,13 @@
             <div class="row">
             @foreach($listado as $producto)
             <div class="card border-warning mb-3 my-1 card-product" >
-                         <div class="card-header"><h5 class="card-title">{{$producto->categoria->nombre}} | {{$producto->nombre}} </h5></div>
+                         <div class="card-header"><h5 class="card-title">
+                            @if($producto->estado==1)
+                            Publicado
+                            @else
+                            Sin publicar
+                            @endif
+                        </h5></div>
                           <img src="{{$producto->imagen}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">{{$producto->descripcion}}</p>
@@ -144,7 +150,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Presentación:{{$producto->presentacion}}</li>
                             <li class="list-group-item">Stock:{{$producto->stock}}<//li>
-                            <li class="list-group-item">Estado: {{$producto->estado}}<//li>
+                            <li class="list-group-item">{{$producto->categoria->nombre}} | {{$producto->nombre}} <//li>
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
