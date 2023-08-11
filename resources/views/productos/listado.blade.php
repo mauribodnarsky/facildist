@@ -146,8 +146,9 @@
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
-                <div class="col-12">
             @foreach($listado as $producto)
+            <div class="col-sm-6 col-12 col-lg-3 ">
+
             <div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header"><h5 class="card-title">
                             @if($producto->estado==1)
@@ -182,8 +183,9 @@
 </svg>Publicar</a>
                         </div>
 </div>
+</div>
+
 @endforeach
-            </div>
             </div>
             </div>
     @endif
