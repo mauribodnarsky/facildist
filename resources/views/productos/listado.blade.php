@@ -201,7 +201,7 @@
                 <form action="{{ route('productos.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <input type="hidden" id="edit_product_id" name="product_id">
+                        <input type="hidden" id="edit_product_id" name="producto_id">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="edit_product_nombre" name="nombre" value="{{ old('nombre') }}" required>
                     </div>
