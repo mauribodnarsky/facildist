@@ -152,7 +152,7 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $objproducto->imagen='https://facildist.com.ar/'.'img/productos/' . $objproducto->id.'/'.$imagen->getClientOriginalName();
+                        $data['imagen']='https://facildist.com.ar/img/productos/'.$objproducto->id.'/'.$imagen->getClientOriginalName();
 
                     }
                  
