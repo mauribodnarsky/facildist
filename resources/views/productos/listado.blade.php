@@ -146,6 +146,7 @@
         @if(isset($listado) && $listado!==null)
             <div class="table-responsive">
             <div class="row">
+                <div class="col-12">
             @foreach($listado as $producto)
             <div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header"><h5 class="card-title">
@@ -155,7 +156,7 @@
                             Sin publicar
                             @endif
                         </h5></div>
-                          <img src="{{$producto->imagen}}" class="card-img-top" alt="...">
+                          <img src="https://facildist.com.ar/{{$producto->imagen}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">{{$producto->descripcion}}</p>
                         </div>
@@ -182,6 +183,7 @@
                         </div>
 </div>
 @endforeach
+            </div>
             </div>
             </div>
     @endif
