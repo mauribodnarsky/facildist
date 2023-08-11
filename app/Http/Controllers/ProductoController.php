@@ -156,8 +156,7 @@ class ProductoController extends Controller
 
                     }
                  
-                    $r=$objproducto->update($data);
-                    dd($r);
+                    $objproducto->update($data);
 
                         $listado=null;
                         $perfil=null;
