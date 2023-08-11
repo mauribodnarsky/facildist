@@ -73,7 +73,7 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $producto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
+                        $producto->imagen='https://facildist.com.ar/'.$carpetaimagen.$imagen->getClientOriginalName();
                         $producto->update();
             }
                         $listado=null;
@@ -152,7 +152,7 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $objproducto->imagen=$carpetaimagen.$imagen->getClientOriginalName();
+                        $objproducto->imagen='https://facildist.com.ar/'.$carpetaimagen.$imagen->getClientOriginalName();
 
                     }
                  
