@@ -147,7 +147,6 @@
             <div class="table-responsive">
             <div class="row">
             @foreach($listado as $producto)
-            <div class="col-sm-6 col-12 col-lg-3 ">
 
             <div class="card border-warning mb-3 my-1 card-product" >
                          <div class="card-header"><h5 class="card-title">
@@ -157,7 +156,7 @@
                             Sin publicar
                             @endif
                         </h5></div>
-                          <img src="https://facildist.com.ar/{{$producto->imagen}}" class="card-img-top" alt="...">
+                          <img src="{{$producto->imagen}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">{{$producto->descripcion}}</p>
                         </div>
@@ -182,7 +181,6 @@
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
 </svg>Publicar</a>
                         </div>
-</div>
 </div>
 
 @endforeach
