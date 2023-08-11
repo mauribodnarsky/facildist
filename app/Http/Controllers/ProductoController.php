@@ -197,6 +197,7 @@ class ProductoController extends Controller
             if($usuario->distribuidora->categorias){
                 $categorias=$usuario->distribuidora->categorias;
             }
+            dd($e->getMessage());
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
 
         }    }
