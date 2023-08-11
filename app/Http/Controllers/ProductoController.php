@@ -122,7 +122,7 @@ class ProductoController extends Controller
      * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, producto $producto)
+    public function update(Request $request)
     {
         try{
             $data=$request->all();
@@ -131,10 +131,10 @@ class ProductoController extends Controller
                 $imagen=$request->file('imagen');
                 $data['imagen']=$imagen->getClientOriginalName(); 
                 
-                }else{
+            }else{
                     
                 $data['imagen']='https://facildist.com.ar/public/img/default.jpg';
-                }
+            }
                 $usuario = Auth::user();
 
                $data['distribuidora_id']=$usuario->distribuidora->id;
