@@ -152,27 +152,12 @@ class ProductoController extends Controller
                         $nombreImagen = $imagen->getClientOriginalName();
                         // Guardamos el imagen en la carpeta del salon
                         $imagen->move($carpetaimagen, $nombreImagen);
-                        $producto->imagen='https://facildist.com.ar/'.'img/productos/' . $producto->id.'/'.$imagen->getClientOriginalName();
+                        $objproducto->imagen='https://facildist.com.ar/'.'img/productos/' . $objproducto->id.'/'.$imagen->getClientOriginalName();
 
                     }
                  
                     $objproducto->update($data);
 
-                        $listado=null;
-                        $perfil=null;
-                        $categorias=null;
-
-                        $usuario=Auth::user();
-                        if($usuario->distribuidora){
-                            $perfil=$usuario->distribuidora;
-                        }
-                        if($usuario->distribuidora->productos){
-                            $listado=$usuario->distribuidora->productos;
-                        }
-                        
-                        if($usuario->distribuidora->categorias){
-                            $categorias=$usuario->distribuidora->categorias;
-                        }
                         return redirect('/productos');
 
                 
