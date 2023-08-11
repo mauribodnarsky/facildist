@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div class="container-fluid">
 <div class="row">
     <div class="col-3 offset-1">
         <!-- Botón para abrir la modal -->
@@ -79,6 +80,17 @@
         </div>
     </div>
 </div>
+
+<!-- FIN MODAL CREAR PRODUCTO -->
+
+
+
+
+
+
+
+
+
         
 <!-- Modal de creación de categoria -->
 <div class="modal fade" id="crearCategoriaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,7 +165,7 @@
                             <li class="list-group-item">{{$producto->categoria->nombre}} | {{$producto->nombre}} <//li>
                         </ul>
                         <div class="card-body">
-                            <a href="#" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                            <a data-bs-toggle="modal" onclick="editProduct({{json_encode($producto)}})" data-bs-target="#editarProductoModal" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
   <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
 </svg></a>
                             <a href="#" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
@@ -174,6 +186,102 @@
             </div>
     @endif
 @endsection
+
+</div>
+
+<!-- Modal de edicion de producto -->
+<div class="modal fade" id="editarProductoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('productos.update') }}" method="PUT" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <input type="hidden" id="edit_product_id" name="product_id">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="edit_product_nombre" name="nombre" value="{{ old('nombre') }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="edit_product_descripcion" name="descripcion" required>{{ old('descripcion') }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="presentacion" class="form-label">Presentación</label>
+                        <input type="text" class="form-control" id="edit_product_presentacion" name="presentacion" value="{{ old('presentacion') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado" class="form-label">Estado</label>
+                        <select class="form-select" id="edit_product_estado" name="estado" required>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="edit_product_stock" name="stock" value="{{ old('stock') }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria_id" class="form-label">Categoría</label>
+                        <select class="form-select" id="edit_product_categoria_id" name="categoria_id" required>
+
+                        @if(isset($categorias) && $categorias !== null)
+  
+                            @foreach($categorias as $categoryItem)
+         
+                               <option value="{{$categoryItem->id}}">{{ $categoryItem->nombre }}</option>
+                    
+                             @endforeach
+                        @else
+                            <option value="">Sin Categoria,cree una</option>
+                        @endif                 
+       </select>
+                    </div>
+                 
+                    <div class="mb-3">
+                        <label for="imagen" class="form-label">Imagen</label>
+                        <input type="file"  class="form-control" id="edit_product_imagen" name="imagen">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function editProduct(producto){
+        // Llenar los campos de entrada en la modal con la información del producto
+        document.getElementById('edit_product_id').value = producto.id;
+        document.getElementById('edit_product_nombre').value = producto.nombre;
+        document.getElementById('edit_product_descripcion').value = producto.descripcion;
+        document.getElementById('edit_product_presentacion').value = producto.presentacion;
+        document.getElementById('edit_product_estado').value = producto.estado;
+        document.getElementById('edit_product_stock').value = producto.stock;
+        document.getElementById('edit_product_categoria_id').value = producto.categoria_id;
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
 
 
 <style>
