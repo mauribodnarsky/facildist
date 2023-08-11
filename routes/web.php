@@ -48,7 +48,6 @@ Auth::login($user);
 return redirect('/dashboard');
 });
 //RUTAS DE CATEGORIAS
-
 Route::prefix('categorias')->middleware(Authenticate::class)->group(function(){
     Route::get('/', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
     Route::get('/show/{id}', [App\Http\Controllers\CategoriaController::class, 'show'])->name('categorias.show');
@@ -67,7 +66,7 @@ Route::prefix('productos')->middleware(Authenticate::class)->group(function(){
     Route::get('/', [App\Http\Controllers\ProductoController::class, 'index'])->name('productos.index');
     Route::get('/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('productos.show');
 
-    Route::put('update/', [App\Http\Controllers\ProductoController::class, 'update'])->name('productos.update');
+    Route::post('/update', [App\Http\Controllers\ProductoController::class, 'update'])->name('productos.update');
 
     Route::post('/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('productos.create');
 
