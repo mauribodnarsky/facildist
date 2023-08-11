@@ -173,7 +173,7 @@ class ProductoController extends Controller
                         if($usuario->distribuidora->categorias){
                             $categorias=$usuario->distribuidora->categorias;
                         }
-                        return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado,'producto_creado' => $objproducto]);
+                        return redirect('/productos');
 
                 
             
