@@ -197,9 +197,7 @@ class ProductoController extends Controller
              $objproducto->save(); // Utiliza save() en lugar de update()
  
              return response()->json(['response' => true], 200);
-         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-             return response()->json(['error' => 'Producto no encontrado'], 404);
-         } catch (\Exception $e) {
+         } catch (Exception $e) {
              return response()->json(['error' => $e->getMessage()], 400);
          }
         }
