@@ -283,7 +283,7 @@
         body: JSON.stringify({ producto_id: id }),
     })
     .then(response => {
-        if (response.ok) {
+        if (response.status==200) {
             // Si la respuesta es exitosa (estado 200), elimina el elemento HTML
             elementHTML.remove();
             // Muestra un alert para informar al usuario

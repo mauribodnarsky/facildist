@@ -189,7 +189,7 @@ class ProductoController extends Controller
     public function publicar(Request $request)
     {
         try{
-            $data=$request->all();
+            $data=$request->json()->all();
             $productoId = $data['producto_id']; // Supongo que tienes un campo oculto en el formulario con el ID del producto a actualizar
            
             $objproducto = producto::findOrFail($productoId);
