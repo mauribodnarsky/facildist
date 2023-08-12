@@ -191,7 +191,6 @@ class ProductoController extends Controller
          try {
              $data = $request->json()->all();
              $productoId = $data['producto_id'];
-            dd($data);
              $objproducto = Producto::findOrFail($productoId);
              $objproducto->publicado = 1;
              $objproducto->save(); // Utiliza save() en lugar de update()

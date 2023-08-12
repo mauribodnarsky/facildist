@@ -283,6 +283,7 @@
         body: JSON.stringify({ producto_id: id }),
     })
     .then(response => {
+        console.log(response)
         if (response.status==200) {
             // Si la respuesta es exitosa (estado 200), elimina el elemento HTML
             elementHTML.remove();
