@@ -6,6 +6,7 @@ use Laravel\Socialite\Facades\Socialite;
  use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\CategoriaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
