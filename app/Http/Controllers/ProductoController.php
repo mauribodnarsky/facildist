@@ -131,9 +131,6 @@ class ProductoController extends Controller
                 $imagen=$request->file('imagen');
                 $data['imagen']=$imagen->getClientOriginalName(); 
                 
-            }else{
-                    
-                $data['imagen']='https://facildist.com.ar/public/img/default.jpg';
             }
                 $usuario = Auth::user();
 
