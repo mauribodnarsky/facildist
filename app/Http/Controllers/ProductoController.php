@@ -186,23 +186,23 @@ class ProductoController extends Controller
 
 
      
-    public function publicar(Request $request)
-    {
-        try{
-            $data=$request->json()->all();
-            $productoId = $data['producto_id']; // Supongo que tienes un campo oculto en el formulario con el ID del producto a actualizar
-           
-            $objproducto = producto::findOrFail($productoId);
-            $objproducto->publicado=1;
-            $objproducto->update();
-            return response()->json(['response'=>true],200);
-        }catch(Exception $e){
-            
-            return response()->json(['error'=>$e->getMessage()],400);
-
-        }   
-     }
-
+     public function publicar(Request $request)
+     {
+         try {
+             $data = $request->json()->all();
+             $productoId = $data['producto_id'];
+ 
+             $objproducto = Producto::findOrFail($productoId);
+             $objproducto->publicado = 1;
+             $objproducto->save(); // Utiliza save() en lugar de update()
+ 
+             return response()->json(['response' => true], 200);
+         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+             return response()->json(['error' => 'Producto no encontrado'], 404);
+         } catch (\Exception $e) {
+             return response()->json(['error' => $e->getMessage()], 400);
+         }
+        }
     /**
      * Remove the specified resource from storage.
      *
