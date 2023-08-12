@@ -11,7 +11,7 @@ class producto extends Model
 {
     use HasFactory;
     protected $with=['categoria'];
-    protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen'];
+    protected $fillable=['id','nombre','descripcion','presentacion','estado','stock','categoria_id','distribuidora_id','imagen','precio_venta_default'];
     protected $rules = [
         'nombre' => 'string|max:60',
         'descripcion' => 'string',
@@ -21,7 +21,7 @@ class producto extends Model
         'categoria_id' => 'required|exists:categorias,id',
         'distribuidora_id' => 'required|exists:distribuidoras,id',
         'imagen' => 'nullable|string',
-
+        'precio_venta_default' => 'nullable|numeric',
     ];
     
     public function create($data)

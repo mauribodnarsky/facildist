@@ -180,7 +180,28 @@ class ProductoController extends Controller
             dd($e->getMessage());
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
 
-        }    }
+        }   
+     }
+
+
+
+     
+    public function publicar(Request $request)
+    {
+        try{
+            $data=$request->all();
+            $productoId = $data['producto_id']; // Supongo que tienes un campo oculto en el formulario con el ID del producto a actualizar
+           
+            $objproducto = producto::findOrFail($productoId);
+            $objproducto->publicado=1;
+            $objproducto->update();
+            return response()->json(['response'=>true],200);
+        }catch(Exception $e){
+            
+            return response()->json(['error'=>$e->getMessage()],400);
+
+        }   
+     }
 
     /**
      * Remove the specified resource from storage.

@@ -176,7 +176,7 @@
 <a href="#" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
   <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
 </svg></a>
-                            <a href="#" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                            <a onclick="publicar(this,{{$producto->id}})" class="card-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
   <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
 </svg>Publicar</a>
@@ -272,6 +272,32 @@
         document.getElementById('edit_product_categoria_id').value = producto.categoria_id;
 
     }
+    function publicar(elementHTML, id) {
+    // Realizar la petición POST a la API de Laravel
+    fetch('/api/productos/publicar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Agrega el token CSRF aquí
+        },
+        body: JSON.stringify({ producto_id: id }),
+    })
+    .then(response => {
+        if (response.ok) {
+            // Si la respuesta es exitosa (estado 200), elimina el elemento HTML
+            elementHTML.remove();
+            // Muestra un alert para informar al usuario
+            alert('Producto publicado correctamente');
+        } else {
+            alert('Error al publicar el producto');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error en la petición');
+    });
+}
+
 
 </script>
 
