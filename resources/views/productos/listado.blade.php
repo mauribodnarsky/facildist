@@ -1,14 +1,15 @@
+<div class="container-fluid">
+
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
 <div class="row">
-    <div class="col-3 offset-1">
+    <div class="col-12 col-md-3 offset-md-1">
         <!-- Botón para abrir la modal -->
 <button type="button" class="btn my-1 btn-warning w-100" data-bs-toggle="modal" data-bs-target="#crearProductoModal">
     + Producto
 </button>
     </div>
-    <div class="col-3 offset-1">
+    <div class="col-12 col-md-3 offset-md-1">
         <!-- Botón para abrir la modal -->
 <button type="button" class="btn my-1 btn-warning w-100" data-bs-toggle="modal" data-bs-target="#crearCategoriaModal">
     + Categoria
