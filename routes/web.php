@@ -18,16 +18,23 @@ use App\Http\Controllers\CategoriaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
 
 require __DIR__.'/auth.php';
 
+Route::get('/', function () {
+   
+        return view('welcome');
+
+});
+
+Route::get('/dashboard', function () {
+    $user=Auth::user();
+    if($user->rol=='nuevo'){
+        return view('usuario-nuevo');
+    }else{
+            return view('welcome');
+        }
+    })->middleware(Authenticate::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/google-auth/redirect', function () {
@@ -48,6 +55,18 @@ Route::get('/google-auth/callback', function () {
 Auth::login($user);
 return redirect('/dashboard');
 });
+     //RUTAS DE DITRIBUIDORAS(crear nuevo usuario)
+
+     Route::prefix('distribuidoras')->middleware(Authenticate::class)->group(function(){
+        Route::get('/bienvenido-vendedor', [App\Http\Controllers\DistribuidoraController::class, 'bienvenidoVendedor'])->name('distribuidoras.soyVendedor');
+        Route::get('/bienvenido-empresario', [App\Http\Controllers\DistribuidoraController::class, 'bienvenidoEmpresario'])->name('distribuidoras.soyPropietario');
+        Route::put('update/', [App\Http\Controllers\DistribuidoraController::class, 'update'])->name('distribuidoras.update');
+        Route::post('/', [App\Http\Controllers\DistribuidoraController::class, 'create'])->name('distribuidoras.create');
+    
+        Route::delete('/{id}', [App\Http\Controllers\DistribuidoraController::class, 'delete'])->name('distribuidoras.destroy');
+    
+        });
+        
 //RUTAS DE CATEGORIAS
 Route::prefix('categorias')->middleware(Authenticate::class)->group(function(){
     Route::get('/', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');

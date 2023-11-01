@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class distribuidora extends Model
 {
     use HasFactory;
-    protected $with=['productos','categorias'];
+    protected $with=['productos','categorias','users'];
     protected $fillable = [
         'nombre' ,
         'correo',
         'direccion',
         'estado',   
-        'user_id' ,
         'razon_social',
         'plan',
         'logo',
@@ -25,7 +24,6 @@ class distribuidora extends Model
         'correo' => 'string',
         'direccion' => 'string',
         'estado' => 'nullable|boolean',
-        'user_id' => 'required|exists:users,id',
         'razon_social' => 'required',
         'plan' => 'nullable|string',
         'logo' => 'nullable|string',
@@ -46,7 +44,6 @@ class distribuidora extends Model
     }
     public function actualizar(array $data = [],$id)
     {
-        $data['user_id'] = Auth::id();
     
         $validator = Validator::make($data, $this->rules);
     
@@ -66,5 +63,8 @@ class distribuidora extends Model
     
     public function categorias(){
         return $this->hasMany(Categoria::class);
+    }
+    public function users(){
+        return $this->hasMany(User::class);
     }
 }

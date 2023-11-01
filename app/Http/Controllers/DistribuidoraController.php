@@ -13,6 +13,29 @@ class DistribuidoraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function bienvenidoVendedor()
+     {
+         $usuario = Auth::user();
+         $usuario = User::find($usuario->id);
+
+         $usuario->rol = 'vendedor';
+         $usuario->update();
+      
+         return view('perfilVendedor', ['perfil' => $usuario]);
+     }
+     public function bienvenidoEmpresario()
+     {
+         $usuario = Auth::user();
+         $usuario = User::find($usuario->id);
+
+         $usuario->rol = 'patron';
+         $usuario->update();
+
+         return view('perfilEmpresario', ['perfil' => $usuario]);
+     }
+
+
     public function index()
     {
         $usuario = Auth::user();

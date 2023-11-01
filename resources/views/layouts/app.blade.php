@@ -16,18 +16,42 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="{{ asset('myriad-pro-cufonfonts-webfont\style.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body{
+    background-color: #FFFFCC !important;
+        }
+        nav{
+    background-color: #FFFFCC !important;
+        }
+        h1{
+            font-family:'Myriad Pro Light';
+            font-weight:normal;
+            font-size:42px
+        }
+        .texto-amarillo{
+            color: #FFFFCC !important;
+
+        }
+        .fondo-celeste{
+            background: #009999;
+        }
+        .borde-azul{
+            border-radius: 7px;
+            border: #003366 solid 3px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
            
                         @guest
                         @else
-                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        <a class="btn btn-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
 <span class="navbar-toggler-icon"></span></a>
                         @endguest
                     </ul>
@@ -46,26 +70,29 @@
     <div class="dropdown mt-3">
       
      <ul class="nav">
-     <li class="nav-item">
-            <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
+     @if(Auth::user()->rol !== 'nuevo')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('clientes.index') }}">{{ __('Clientes') }}</a>
+        <a class="nav-link" href="{{ route('clientes.index') }}">{{ __('Clientes') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('revistas.index') }}">{{ __('Revistas') }}</a>
+        <a class="nav-link" href="{{ route('revistas.index') }}">{{ __('Revistas') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('ofertas.index') }}">{{ __('Ofertas') }}</a>
+        <a class="nav-link" href="{{ route('ofertas.index') }}">{{ __('Ofertas') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Pedidos') }}</a>
+        <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Pedidos') }}</a>
     </li>
     <li class="nav-item">
-            <a class="nav-link" href="{{ route('distribuidora.perfil') }}">{{ __('Perfil') }}</a>
+        <a class="nav-link" href="{{ route('distribuidora.perfil') }}">{{ __('Perfil') }}</a>
     </li>
+@endif
     <li class="nav-item">
-            <form  method="POST" action="{{ route('logout') }}">@csrf<button type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
+            <form  method="POST" action="{{ route('logout') }}">@csrf
+                <button type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
     </li>
      </ul>
     </div>

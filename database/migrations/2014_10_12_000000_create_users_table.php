@@ -20,8 +20,11 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('rol')->default('nuevo'); //puede ser tambien vendedor o propietario 
 
             $table->rememberToken();
+            $table->unsignedBigInteger('distribuidora_id')->nullable()->default(null);
+            $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
             $table->timestamps();
         });
     }
