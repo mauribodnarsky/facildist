@@ -23,8 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('rol')->default('nuevo'); //puede ser tambien vendedor o propietario 
 
             $table->rememberToken();
-            $table->unsignedBigInteger('distribuidora_id')->nullable()->default(null);
-            $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
             $table->timestamps();
         });
     }
