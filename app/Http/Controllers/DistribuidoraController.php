@@ -78,8 +78,7 @@ class DistribuidoraController extends Controller
                 $list_email = $request->input('email_list'); // Supongo que recibes el listado de correos por POST
                 // Divide la cadena en direcciones de correo individuales
                 $emails = explode(' ', $list_email);
-                $e=sizeof($emails);
-
+                dd($emails);
                 foreach ($emails as $email) {
                     $objuserpeticion = new UserPeticion();
                     $datauserpeticion['user_id'] = Auth::user()->id;
