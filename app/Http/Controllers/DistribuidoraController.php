@@ -78,17 +78,18 @@ class DistribuidoraController extends Controller
                 $list_email = $request->input('email_list'); // Supongo que recibes el listado de correos por POST
                 // Divide la cadena en direcciones de correo individuales
                 $emails = explode(' ', $list_email);
-                dd($emails);
                 foreach ($emails as $email) {
                     $objuserpeticion = new UserPeticion();
                     $datauserpeticion['user_id'] = Auth::user()->id;
                     $datauserpeticion['distribuidora_id'] = $distribuidora->id;
-                    $datauserpeticion['email'] = $email; // Asigna la dirección de correo a un campo en la tabla
-                    $r=$objuserpeticion->create($datauserpeticion);
+                    $datauserpeticion['email'] = $email;
+                
+                    dd($datauserpeticion); // Agrega esta línea para depurar
+                
+                    $r = $objuserpeticion->create($datauserpeticion);
                 }
+                
                 dd($r);
-
-
 
 
                 // Creamos una carpeta para el salon si no existe
