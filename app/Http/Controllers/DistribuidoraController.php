@@ -85,7 +85,7 @@ class DistribuidoraController extends Controller
                     $datauserpeticion['user_id'] = Auth::user()->id;
                     $datauserpeticion['distribuidora_id'] = $distribuidora->id;
                     $datauserpeticion['email'] = $email;
-                        
+                    var_dump($datauserdistribuidora);
                     $r = $objuserpeticion->create($datauserpeticion);
                 }
                 
