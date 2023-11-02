@@ -25,14 +25,13 @@ class UserPeticion extends Model
 
     public function create($data)
     {
- 
 
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
             return $validator->errors();
         }
-
+        var_dump(static::query()->create($data));die();
         return static::query()->create($data);
     }
 }
