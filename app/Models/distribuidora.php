@@ -20,7 +20,7 @@ class distribuidora extends Model
         'logo',
     ];
     protected $rules = [
-        'nombre' => 'string|max:12',
+        'nombre' => 'string',
         'correo' => 'string',
         'direccion' => 'string',
         'estado' => 'nullable|boolean',

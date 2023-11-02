@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,6 +18,9 @@
     <link href="{{ asset('myriad-pro-cufonfonts-webfont\style.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="../../../public/img/facildist.ico"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body{
     background-color: #FFFFCC !important;
@@ -32,15 +34,29 @@
             font-size:42px
         }
         .texto-amarillo{
-            color: #FFFFCC !important;
+            color: #f8ea19 !important;
 
         }
-        .fondo-celeste{
-            background: #009999;
+        .fondo-blanco-a-negro{
+            background: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .borde-azul{
+        .borde-amarillo{
             border-radius: 7px;
-            border: #003366 solid 3px;
+            border: #f8ea19 solid 3px;
+        }
+        .fondo-blanco-a-negro:hover{
+            background: black;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+
+        .btn-outline-dark:hover{
+            background: black;
+            border-color: #f8ea19;
+            color: white;
         }
     </style>
 </head>
@@ -103,5 +119,11 @@
             @yield('content')
         </main>
     </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
 </body>
 </html>

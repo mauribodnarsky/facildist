@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\distribuidora;
+use App\Models\UserDistribuidora;
+use App\Models\UserPeticion;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,10 +62,37 @@ class DistribuidoraController extends Controller
                     
                 $data['logo']='';
                 }
-                $data['user_id']=Auth::user()->id;
+                $data['correo']=Auth::user()->email;
+                $data['nombre']=Auth::user()->name;
+
             $objdistribuidora=new distribuidora();
             $distribuidora=$objdistribuidora->create($data);
             if(isset($distribuidora->id)){
+                $objuserdistribuidora=new UserDistribuidora();
+                $datauserdistribuidora['user_id']=Auth::user()->id;
+                $datauserdistribuidora['distribuidora_id']=$distribuidora->id;
+                $objuserdistribuidora->create($datauserdistribuidora);
+
+
+                // Guarda los vendedores 
+                $list_email = $request->input('email_list'); // Supongo que recibes el listado de correos por POST
+                // Divide la cadena en direcciones de correo individuales
+                $emails = explode(' ', $list_email);
+                $e=sizeof($emails);
+                $objuserpeticion = new UserPeticion();
+
+                foreach ($emails as $email) {
+
+                    $datauserpeticion['user_id'] = Auth::user()->id;
+                    $datauserpeticion['distribuidora_id'] = $distribuidora->id;
+                    $datauserpeticion['email'] = $email; // Asigna la dirección de correo a un campo en la tabla
+                    $r=$objuserpeticion->create($datauserpeticion);
+                }
+                dd($r);
+
+
+
+
                 // Creamos una carpeta para el salon si no existe
                     if($request->file('logo')){
         
@@ -78,6 +107,7 @@ class DistribuidoraController extends Controller
                         $logo->move($carpetalogo, $nombreImagen);
                         $distribuidora->logo="img/distribuidoras/logos/". $distribuidora->id."/".$logo->getClientOriginalName();
                         $distribuidora->update();
+                        
                         return view('perfil_completo', ['distribuidora' => $distribuidora]);
 
                 
