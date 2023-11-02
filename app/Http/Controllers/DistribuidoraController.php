@@ -79,10 +79,9 @@ class DistribuidoraController extends Controller
                 // Divide la cadena en direcciones de correo individuales
                 $emails = explode(' ', $list_email);
                 $e=sizeof($emails);
-                $objuserpeticion = new UserPeticion();
 
                 foreach ($emails as $email) {
-
+                    $objuserpeticion = new UserPeticion();
                     $datauserpeticion['user_id'] = Auth::user()->id;
                     $datauserpeticion['distribuidora_id'] = $distribuidora->id;
                     $datauserpeticion['email'] = $email; // Asigna la dirección de correo a un campo en la tabla
