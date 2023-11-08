@@ -21,14 +21,11 @@ class AddTablePeticionesUsuarios extends Migration
             // Definición de las claves foráneas
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('distribuidora_id')->references('id')->on('distribuidoras');
-              });    }
+              });   
+             }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+
+             public function down()
     {
         //
     }
