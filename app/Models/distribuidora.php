@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Categoria;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -64,7 +65,8 @@ class distribuidora extends Model
     public function categorias(){
         return $this->hasMany(Categoria::class);
     }
-    public function users(){
-        return $this->hasMany(User::class);
+    public function users():BelongsToMany
+    {
+        return $this->belongsToMany(user::class,'user_distribuidora');
     }
 }

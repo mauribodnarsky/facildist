@@ -19,8 +19,6 @@ class UserPeticion extends Model
     ];
     protected $rules = [
         'email' => 'string|required',       
-        'distribuidora_id' => 'required|exists:distribuidoras,id',
-        'user_id' => 'required|exists:users,id',
     ];
 
     public function create($data)
@@ -31,7 +29,6 @@ class UserPeticion extends Model
         if ($validator->fails()) {
             return $validator->errors();
         }
-        var_dump(static::query()->create($data));die();
         return static::query()->create($data);
     }
 }

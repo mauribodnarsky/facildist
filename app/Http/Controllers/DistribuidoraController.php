@@ -6,6 +6,8 @@ use App\Models\distribuidora;
 use App\Models\UserDistribuidora;
 use App\Models\UserPeticion;
 use Exception;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class DistribuidoraController extends Controller
@@ -19,11 +21,18 @@ class DistribuidoraController extends Controller
      public function bienvenidoVendedor()
      {
          $usuario = Auth::user();
-         $usuario = User::find($usuario->id);
-
+         $usuario = User::find($usuario->id);        
          $usuario->rol = 'vendedor';
          $usuario->update();
-      
+        $userPeticion=UserPeticion::where('email',$usuario->email)->first();
+        if ($userPeticion) {
+            // El registro existe
+            DB::insert('INSERT INTO user_distribuidora VALUES (NULL, ?,?,?,? )', [ $usuario->id, $userPeticion->distribuidora_id,Carbon::now(),Carbon::now()]);
+            $userPeticion->delete();
+
+        } else {
+            // El registro no existe
+        }
          return view('perfilVendedor', ['perfil' => $usuario]);
      }
      public function bienvenidoEmpresario()
@@ -33,7 +42,7 @@ class DistribuidoraController extends Controller
 
          $usuario->rol = 'patron';
          $usuario->update();
-
+        
          return view('perfilEmpresario', ['perfil' => $usuario]);
      }
 
@@ -80,17 +89,10 @@ class DistribuidoraController extends Controller
                 $list_email = str_replace("\n", " ", $list_email);
 
                 $emails = explode(' ', $list_email);
-                foreach ($emails as $email) {
-                    $objuserpeticion = new UserPeticion();
-                    $datauserpeticion['user_id'] = Auth::user()->id;
-                    $datauserpeticion['distribuidora_id'] = $distribuidora->id;
-                    $datauserpeticion['email'] = $email;
-                    $r = $objuserpeticion->create($datauserpeticion);
-                    var_dump($r);
 
+                foreach ($emails as $email) {
+                   DB::insert('INSERT INTO users_peticiones VALUES (NULL, ?,?,? )', [ Auth::user()->id, $distribuidora->id, $email]);
                 }
-                
-                dd($r);
 
 
                 // Creamos una carpeta para el salon si no existe

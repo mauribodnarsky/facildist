@@ -21,15 +21,17 @@ class ProductoController extends Controller
         $listado=null;
         $perfil=null;
         $usuario=Auth::user();
-        if($usuario->distribuidora){
+        if(isset($usuario->distribuidora)){
             $perfil=$usuario->distribuidora;
         }
-        if($usuario->distribuidora->productos){
-            $listado=$usuario->distribuidora->productos;
+
+        if(isset($usuario->distribuidora->get(0)->productos)){
+            $listado=$usuario->distribuidora->get(0)->productos;
         }
+
         $categorias=null;
-        if($usuario->distribuidora->categorias){
-            $categorias=$usuario->distribuidora->categorias;
+        if(isset($usuario->distribuidora->get(0)->categorias)){
+            $categorias=$usuario->distribuidora->get(0)->categorias;
         }
 
 
@@ -57,7 +59,7 @@ class ProductoController extends Controller
                 }
                 $usuario = Auth::user();
 
-               $data['distribuidora_id']=$usuario->distribuidora->id;
+               $data['distribuidora_id']=$usuario->distribuidora->get(0)->id;
             $objproducto=new producto();
             $producto=$objproducto->create($data);
             if(isset($producto->id)){
@@ -82,14 +84,14 @@ class ProductoController extends Controller
 
                         $usuario=Auth::user();
                         if($usuario->distribuidora){
-                            $perfil=$usuario->distribuidora;
+                            $perfil=$usuario->distribuidora->get(0);
                         }
-                        if($usuario->distribuidora->productos){
-                            $listado=$usuario->distribuidora->productos;
+                        if($usuario->distribuidora->get(0)->productos){
+                            $listado=$usuario->distribuidora->get(0)->productos;
                         }
                         
                         if($usuario->distribuidora->categorias){
-                            $categorias=$usuario->distribuidora->categorias;
+                            $categorias=$usuario->distribuidora->get(0)->categorias;
                         }
                         return view('productos.listado',['perfil'=>$perfil,'categorias'=>$categorias,'listado'=>$listado,'producto_creado' => $producto]);
 
@@ -103,10 +105,10 @@ class ProductoController extends Controller
             
             $usuario=Auth::user();
             if($usuario->distribuidora){
-                $perfil=$usuario->distribuidora;
+                $perfil=$usuario->distribuidora->get(0);
             }
-            if($usuario->distribuidora->productos){
-                $listado=$usuario->distribuidora->productos;
+            if($usuario->distribuidora->get(0)->productos){
+                $listado=$usuario->distribuidora->get(0)->productos;
             }
 
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado]);
@@ -134,7 +136,7 @@ class ProductoController extends Controller
             }
                 $usuario = Auth::user();
 
-               $data['distribuidora_id']=$usuario->distribuidora->id;
+               $data['distribuidora_id']=$usuario->distribuidora->get(0)->id;
                $objproducto = producto::findOrFail($productoId);
                if(isset($objproducto)){
                 // Creamos una carpeta para el salon si no existe
@@ -167,15 +169,15 @@ class ProductoController extends Controller
             
             $usuario=Auth::user();
             if($usuario->distribuidora){
-                $perfil=$usuario->distribuidora;
+                $perfil=$usuario->distribuidora->get(0);
             }
-            if($usuario->distribuidora->productos){
-                $listado=$usuario->distribuidora->productos;
+            if($usuario->distribuidora->get(0)->productos){
+                $listado=$usuario->distribuidora->get(0)->productos;
             }
 
                         
             if($usuario->distribuidora->categorias){
-                $categorias=$usuario->distribuidora->categorias;
+                $categorias=$usuario->distribuidora->get(0)->categorias;
             }
             dd($e->getMessage());
             return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);

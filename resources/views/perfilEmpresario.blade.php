@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+@if(isset($perfil->distribuidora) && $perfil->distribuidora==null)
+
 <div class="row">
             <div class="col-11 offset-1">
                 <h1 class="text-right">Terminemos de configurar tu cuenta</h1>    
@@ -27,6 +29,6 @@
     
     <button type="submit" class="btn btn-outline-danger w-100">Guardar datos</button>
 </form>
-
+@endif
 </div>
 @endsection

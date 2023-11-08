@@ -28,38 +28,43 @@ class CategoriaController extends Controller
        try{
            $data=$request->all();
             $usuario = Auth::user();
-            $data['distribuidora_id']=$usuario->distribuidora->id;
+        if ($usuario->distribuidora) {
+            $data['distribuidora_id'] = $usuario->distribuidora->get(0)->id;
+        }
            $objcategoria=new Categoria();
            $categoria=$objcategoria->create($data);
             $listado=null;
+            $categorias=null;
             $perfil=null;
+
             $usuario=Auth::user();
-            if($usuario->distribuidora){
-                $perfil=$usuario->distribuidora;
+            if(isset($usuario->distribuidora)){
+                $perfil=$usuario->distribuidora->get(0);
             }
-            if($usuario->distribuidora->productos){
-                $listado=$usuario->distribuidora->productos;
+            if(isset($usuario->distribuidora->get(0)->productos)){
+                $listado=$usuario->distribuidora->get(0)->productos;
             }
-            if($usuario->distribuidora->categorias){
-                $categorias=$usuario->distribuidora->categorias;
+            if(isset($usuario->distribuidora->get(0)->categorias)){
+                $categorias=$usuario->distribuidora->get(0)->categorias;
                }
+
                return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
     
        }catch(Exception $e){
+           $categorias=null;
            $listado=null;
            $perfil=null;
            $usuario=Auth::user();
-           if($usuario->distribuidora){
-               $perfil=$usuario->distribuidora;
+           if(isset($usuario->distribuidora)){
+               $perfil=$usuario->distribuidora->get(0);
            }
-           if($usuario->distribuidora->productos){
-               $listado=$usuario->distribuidora->productos;
+           if(isset($usuario->distribuidora->get(0)->productos)){
+               $listado=$usuario->distribuidora->get(0)->productos;
            }
-           if($usuario->distribuidora->categorias){
+           if(isset($usuario->distribuidora->get(0)->categorias)){
             $categorias=$usuario->distribuidora->categorias;
            }
            return view('productos.listado',['perfil'=>$perfil,'listado'=>$listado,'categorias'=>$categorias]);
-
        }
 
    }

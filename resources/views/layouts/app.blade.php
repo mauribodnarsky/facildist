@@ -107,8 +107,8 @@
     </li>
 @endif
     <li class="nav-item">
-            <form  method="POST" action="{{ route('logout') }}">@csrf
-                <button type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
+            <form  method="POST" class="nav-link" action="{{ route('logout') }}">@csrf
+                <button  type="submit" class="nav-link">{{ __('Salir') }} </button> </form>
     </li>
      </ul>
     </div>
